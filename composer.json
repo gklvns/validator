@@ -1,7 +1,6 @@
 {
     "name": "gklvns/validator",
     "description": "Provides tools to validate values",
-    "version": "1.0.0",
     "type": "library",
     "license": "MIT",
     "autoload": {
