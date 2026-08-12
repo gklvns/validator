@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/gklvns/validator/compare/v1.1.0...v1.2.0) (2026-08-12)
+
+
+### Features
+
+* implemented Count rule ([f9b273d](https://github.com/gklvns/validator/commit/f9b273da3c0d44f27df01fac7c3759786b0370a3))
+* implemented Count rule ([dfd9658](https://github.com/gklvns/validator/commit/dfd96586108eb100b27b5e00875e104899bdca6f))
+
 # [1.1.0](https://github.com/gklvns/validator/compare/v1.0.0...v1.1.0) (2026-08-12)
 
 
