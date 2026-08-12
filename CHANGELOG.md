@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/gklvns/validator/compare/v1.2.0...v1.3.0) (2026-08-12)
+
+
+### Features
+
+* improved release notes generator ([ef1ba47](https://github.com/gklvns/validator/commit/ef1ba47c6a6e1e4dd3d4b6f3f78c9badf2e2f83c))
+
 # [1.2.0](https://github.com/gklvns/validator/compare/v1.1.0...v1.2.0) (2026-08-12)
 
 
