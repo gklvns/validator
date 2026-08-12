@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/gklvns/validator/compare/v1.3.0...v1.3.1) (2026-08-12)
+
+
+### Bug Fixes
+
+* **release:** fixed use of deprecated app-id input ([1ccdfe1](https://github.com/gklvns/validator/commit/1ccdfe1ec7102636f40617ae7f9d87fab086e410))
+
 # [1.3.0](https://github.com/gklvns/validator/compare/v1.2.0...v1.3.0) (2026-08-12)
 
 
