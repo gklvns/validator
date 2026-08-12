@@ -11,8 +11,11 @@ declare(strict_types=1);
 
 namespace Gklvns\Validator\Tests;
 
+use Countable;
 use Gklvns\Validator\AbstractRule;
 use Gklvns\Validator\AbstractRuleValidator;
+use Gklvns\Validator\Rule\Count;
+use Gklvns\Validator\Rule\CountValidator;
 use Gklvns\Validator\Rule\Length;
 use Gklvns\Validator\Rule\LengthValidator;
 use Gklvns\Validator\Rule\NotEmpty;
@@ -125,6 +128,45 @@ final class ValidatorTest extends TestCase
         $this->assertCount(1, $validator->validate('test', [$lengthRule]));
 
         $this->assertInstanceOf(LengthValidator::class, $validator->getRuleValidator($lengthRule));
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function testCountRule(): void
+    {
+        $validator = new Validator([new Count(min: 1, max: 4)]);
+
+        $countable = new class implements Countable {
+            public function count(): int
+            {
+                return 5;
+            }
+        };
+        $violations = $validator->validate($countable);
+        $this->assertSame('This value must have at most 4 items.', $violations[0]->getErrorMessage());
+
+        $violations = $validator->validate([1, 2, 3, 4, 5]);
+        $this->assertSame('This value must have at most 4 items.', $violations[0]->getErrorMessage());
+
+        $violations = $validator->validate(call_user_func(static function () {
+            foreach ([1, 2, 3, 4, 5] as $item) {
+                yield $item;
+            }
+        }));
+        $this->assertSame('This value must have at most 4 items.', $violations[0]->getErrorMessage());
+
+        $this->assertCount(0, $validator->validate([1, 2, 3, 4], [new Count(min: 4)]));
+        $this->assertCount(0, $validator->validate([1, 2, 3, 4], [new Count(max: 4)]));
+        $this->assertCount(0, $validator->validate([1, 2, 3, 4], [new Count(min: 4, max: 4)]));
+
+        $this->assertCount(1, $validator->validate([1, 2, 3], [new Count(min: 5)]));
+        $this->assertCount(1, $validator->validate([1, 2, 3, 4, 5], [new Count(max: 3)]));
+
+        $countRule = new Count(min: 1, max: 3);
+        $this->assertCount(1, $validator->validate([1, 2, 3, 4], [$countRule]));
+
+        $this->assertInstanceOf(CountValidator::class, $validator->getRuleValidator($countRule));
     }
 
     /**
