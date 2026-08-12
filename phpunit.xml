@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/13.3/phpunit.xsd">
+    <coverage>
+        <report>
+            <xml outputDirectory="build/coverage"/>
+        </report>
+    </coverage>
+
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
+
+    <logging>
+        <junit outputFile="build/junit.xml"/>
+    </logging>
+</phpunit>
