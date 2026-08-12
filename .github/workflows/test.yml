@@ -48,7 +48,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ matrix.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json', '**/composer.lock') }}
@@ -65,14 +65,14 @@ jobs:
         run: composer test
 
       - name: Coverage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: build/coverage/
           retention-days: 7
 
       - name: Infection
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: infection
           path: build/infection/
