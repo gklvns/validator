@@ -4,7 +4,23 @@
     ],
     "plugins": [
         "@semantic-release/commit-analyzer",
-        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/release-notes-generator",
+            {
+                "parserOpts": {
+                    "noteKeywords": [
+                        "BREAKING CHANGE",
+                        "BREAKING CHANGES"
+                    ]
+                },
+                "writerOpts": {
+                    "doops": false
+                },
+                "gitRawCommitsOpts": {
+                    "noMerges": true
+                }
+            }
+        ],
         "@semantic-release/changelog",
         "@semantic-release/github",
         "@semantic-release/git"
